@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="chatroom" style="width:400px;height:300px;overflow:auto;border:1px solid blue"></div>
+    <input type="text" name="sayinput" id="sayinput" value="">
+    <input type="button" name="send" id="sendbutton" value="发送">
+</body>
+</html>
+
+<script src="WsClient.js" charset="utf-8"></script>
+  <script type="text/javascript">
+    function send() {
+      ws.send(sayinput.value);
+      document.getElementById("chatroom").innerHTML += "我说："+sayinput.value + "<br/>";
+      sayinput.value = '';
+    }
+    document.onkeyup = function (event) {
+      if (event.keyCode == 13) {
+        send();
+      }
+    }
+    sendbutton.onclick = function () {
+      send();
+    }
+  </script>
